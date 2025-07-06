@@ -199,8 +199,8 @@
 
 ## Users Credentials
 
-- username: alice@r.it, pwd: alice
-- username: bob@r.it, pwd: bob
-- username: charles@r.it, pwd: charles
-- username: dave@r.it, pwd: dave
-- username: emily@r.it, pwd: emily
+- username: alice@r.com, pwd: alice
+- username: bob@r.com, pwd: bob
+- username: charles@r.com, pwd: charles
+- username: dave@r.com, pwd: dave
+- username: emily@r.com, pwd: emily
