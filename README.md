@@ -3,12 +3,11 @@
 ## Student: s343732 IORIO CHIARA
 
 ## React Client Application Routes
-
-- Route `/`: home page, showing the list of ingredients (unauthenticated users).
-- Route `/orders`: page showing on the left part the list of ingredients, while on the right one the list of orders purchased by the authenticated user.
-- Route `/orders/new`: page showing on the left part the list of ingredients, while on the right one the form to purchase a new order by the authenticated user.
-- Route `orders/:id`: page showing on the left part the list of ingredients, while on the right one the details of the order with the `id` in the route of the authenticated user.
-- Route `login`: page with the login form (including TOTP form needed).
+- Route `/`: for a non-authenticated user, it shows the list of bases, sizes and ingredients. If the user is authenticated, it is replaced by `/orders`.
+- Route `/orders`: for an authenticated user, on the left it shows the list of ingredients, bases and sizes, while on the right the list of orders.
+- Route `orders/new`: for an authenticated user, on the left it shows list of bases, sizes and ingredients, while on the right the form for placing a new order.
+- Route `/orders/:id`: for an authenticated user, on the left it shows list of bases, sizes and ingredients, while on the right the list of the order #id (if placed by them).
+- Route `/login`: route showing the login/TOTP form.
 
 ## API Server
 - GET `/api/sizes`
@@ -169,13 +168,12 @@
 
 
 ## Database Tables
-
+- Table `bases`- contains the list of possible bases.
+- Table `sizes`- contains the list of possible dish sizes with their prize and maximum number of ingredients.
 - Table `ingredients` - contains the list of ingredients, characterized by name (primary key, since it is considered unique), prize, quantity (if specified) and, if present, the required ingredient.
 - Table `incompatibilities` - contains the list of incompatible ingredients (stored as a pair of ingredients)
 - Table `orders` - contains the list of orders, represented by their unique ID, the user that made them, the total price, the size and the base dish.
 - Table `ordersIngredients` - contains the ingredients associated to each order (pairs orderId - ingredient).
-- Table `bases`- contains the list of possible bases.
-- Table `sizes`- contains the list of possible dish sizes with their prize and maximum number of ingredients.
 - Table `users`- contains the list of users, identified by userId, email, name, salt, hashed password and TOTP secret.
 
 
@@ -189,18 +187,12 @@
   - `IngredientsAccordion` (in `MenuOptions.jsx`): the wrapper for each accordion item (rendered by `IngredientAccordionItem`) showing an ingredient and its characteristics (name, quantity, price, required ingredients and incompatibilities).
 - `OrdersList` (in `OrdersList.jsx`): the component rendering, for an authenticated user, the table containing their orders.
 - `OrdersRow` (in `OrdersList.jsx`): each of the rows in the orders table, reporting the id, date and price of each order. The order details can be visualized by clicking on the info button, and the order can be deleted through the trash button (only if the user is logged in with TOTP).
-- `OrderConfigurator`(in `OrderConfigurator.jsx`): the component rendering, for an authenticated user, the form for creating a new order. It prevents the user from choosing an invalid configuration of ingredients/sizes in an order, that is afterwards validated on the server size. Moreover, it is used also to show the details about an order (when clicking on the info button for an order).
+- `OrderConfigurator`(in `OrderConfigurator.jsx`): the component rendering, for an authenticated user, the form for creating a new order. It prevents the user from choosing an invalid configuration of ingredients/sizes in an order, that is afterwards validated on the server side. Moreover, it is used also to show the details about an order (when clicking on the info button for an order).
 - `LoginForm`(in `AuthComponent.jsx`): the component rendering the login form. It is responsible for the client-side validation of the login credentials (non-empty fields).
 - `TotpForm`(in `AuthComponent.jsx`): the component rendering the TOTP form. It is responsible for the client-side validation of the TOTP (six-digits string).
 - `MyHeader` (in `MyHeader.jsx`): the component rendering the header of the application, containing the name of the application, the name of the user (if logged in) and the login/logout button.
 - `MyFooter` (in `MyFooter.jsx`): the component rendering the footer.
 
-## React Routes
-- `/`: for a non-authenticated user, it shows the list of bases, sizes and ingredients. If the user is authenticated, it is replaced by `/orders`.
-- `/orders`: for an authenticated user, on the left it shows the list of ingredients, bases and sizes, while on the right the list of orders.
-- `orders/new`: for an authenticated user, on the left it shows list of bases, sizes and ingredients, while on the right the form for placing a new order.
-- `/orders/:id`: for an authenticated user, on the left it shows list of bases, sizes and ingredients, while on the right the list of the order #id (if placed by them).
-- `/login`: route showing the login/TOTP form.
 ## Screenshot
 
 ![Screenshot](./img/screenshot.png)
