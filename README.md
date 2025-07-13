@@ -1,6 +1,5 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/xnU44QZi)
 # Exam #2: "Restaurant"
-## Student: s343732 IORIO CHIARA
+This project was developed during the 2025 edition of the Web Applications course in the Cybersecurity Master's degree at Politecnico di Torino.
 
 ## React Client Application Routes
 - Route `/`: for a non-authenticated user, it shows the list of bases, sizes and ingredients. If the user is authenticated, it is replaced by `/orders`.
